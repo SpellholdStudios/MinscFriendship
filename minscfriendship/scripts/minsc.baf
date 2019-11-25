@@ -1,0 +1,653 @@
+//LOCK AND UNLOCK AERIE WITCH
+//////////////////////////////////
+
+IF
+InParty(Myself)
+CombatCounter(0)
+!Global("I#MinscWitchActive","GLOBAL",3)
+Global("MinscWitch","GLOBAL",0)
+Alignment(Player1,MASK_GOOD)
+OR(2)
+Class(Player1,MAGE_ALL)
+Class(Player1,BARD_ALL)
+THEN
+RESPONSE #100
+SetGlobal("MinscWitch","GLOBAL",3)
+END
+
+IF
+Global("I#MinscWitchActive","GLOBAL",3)
+Global("MinscWitch","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobal("MinscWitch","GLOBAL",0)
+END
+
+//////////////////////////////////
+//MINSC 1ST TALK
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+AreaCheck("AR0400")
+Global("I#MinscFriendshipActive","GLOBAL",0)
+Global("I#MinscTalk","GLOBAL",0)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("I#MinscTime","GLOBAL",300)
+SetGlobal("I#MinscFriendshipActive","GLOBAL",1)
+SetGlobal("I#MinscTalk","GLOBAL",1)
+END
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+Global("I#MinscFriendshipActive","GLOBAL",1)
+Global("I#MinscTalk","GLOBAL",1)
+RealGlobalTimerExpired("I#MinscTime","GLOBAL")
+!StateCheck(Player1,CD_STATE_NOTVALID)
+!StateCheck("MINSC",CD_STATE_NOTVALID)
+OR(5)
+AreaCheck("AR0400")
+AreaCheck("AR0700")
+AreaCheck("AR0900")
+AreaCheck("AR0300")
+AreaCheck("AR0500")
+THEN
+RESPONSE #100
+SetGlobal("I#MinscTalk","GLOBAL",2)
+END
+
+IF
+Global("I#MinscTalk","GLOBAL",2)
+THEN
+RESPONSE #100
+MoveToObject(Player1)
+StartDialogue("MINSCJ",Player1)
+END
+
+//MINSC 2ND TALK
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+Global("I#MinscFriendshipActive","GLOBAL",1)
+Global("I#MinscTalk","GLOBAL",3)
+RealGlobalTimerExpired("I#MinscTime","GLOBAL")
+THEN
+RESPONSE #100
+RealSetGlobalTimer("I#MinscTime","GLOBAL",1800)
+SetGlobal("I#MinscTalk","GLOBAL",4)
+END
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+Global("I#MinscFriendshipActive","GLOBAL",1)
+Global("I#MinscTalk","GLOBAL",4)
+RealGlobalTimerExpired("I#MinscTime","GLOBAL")
+!StateCheck(Player1,CD_STATE_NOTVALID)
+!StateCheck("MINSC",CD_STATE_NOTVALID)
+THEN
+RESPONSE #100
+SetGlobal("I#MinscTalk","GLOBAL",5)
+END
+
+IF
+Global("I#MinscTalk","GLOBAL",5)
+THEN
+RESPONSE #100
+MoveToObject(Player1)
+StartDialogue("MINSCJ",Player1)
+END
+
+//MINSC 3RD TALK
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+Global("I#MinscFriendshipActive","GLOBAL",1)
+Global("I#MinscTalk","GLOBAL",6)
+RealGlobalTimerExpired("I#MinscTime","GLOBAL")
+THEN
+RESPONSE #100
+RealSetGlobalTimer("I#MinscTime","GLOBAL",1800)
+SetGlobal("I#MinscTalk","GLOBAL",7)
+END
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+Global("I#MinscFriendshipActive","GLOBAL",1)
+Global("I#MinscTalk","GLOBAL",7)
+RealGlobalTimerExpired("I#MinscTime","GLOBAL")
+!StateCheck(Player1,CD_STATE_NOTVALID)
+!StateCheck("MINSC",CD_STATE_NOTVALID)
+THEN
+RESPONSE #100
+SetGlobal("I#MinscTalk","GLOBAL",8)
+END
+
+IF
+Global("I#MinscTalk","GLOBAL",8)
+THEN
+RESPONSE #100
+MoveToObject(Player1)
+StartDialogue("MINSCJ",Player1)
+END
+
+//MINSC 4TH TALK
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+Global("I#MinscFriendshipActive","GLOBAL",1)
+Global("I#MinscTalk","GLOBAL",9)
+RealGlobalTimerExpired("I#MinscTime","GLOBAL")
+THEN
+RESPONSE #100
+RealSetGlobalTimer("I#MinscTime","GLOBAL",1800)
+SetGlobal("I#MinscTalk","GLOBAL",10)
+END
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+Global("I#MinscFriendshipActive","GLOBAL",1)
+Global("I#MinscTalk","GLOBAL",10)
+RealGlobalTimerExpired("I#MinscTime","GLOBAL")
+!StateCheck(Player1,CD_STATE_NOTVALID)
+!StateCheck("MINSC",CD_STATE_NOTVALID)
+THEN
+RESPONSE #100
+SetGlobal("I#MinscTalk","GLOBAL",11)
+END
+
+IF
+Global("I#MinscTalk","GLOBAL",11)
+THEN
+RESPONSE #100
+MoveToObject(Player1)
+StartDialogue("MINSCJ",Player1)
+END
+
+//MINSC 5TH TALK
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+Global("I#MinscFriendshipActive","GLOBAL",1)
+Global("I#MinscTalk","GLOBAL",12)
+RealGlobalTimerExpired("I#MinscTime","GLOBAL")
+THEN
+RESPONSE #100
+RealSetGlobalTimer("I#MinscTime","GLOBAL",1800)
+SetGlobal("I#MinscTalk","GLOBAL",13)
+END
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+Global("I#MinscFriendshipActive","GLOBAL",1)
+Global("I#MinscTalk","GLOBAL",13)
+RealGlobalTimerExpired("I#MinscTime","GLOBAL")
+!StateCheck(Player1,CD_STATE_NOTVALID)
+!StateCheck("MINSC",CD_STATE_NOTVALID)
+THEN
+RESPONSE #100
+SetGlobal("I#MinscTalk","GLOBAL",14)
+END
+
+IF
+Global("I#MinscTalk","GLOBAL",14)
+THEN
+RESPONSE #100
+MoveToObject(Player1)
+StartDialogue("MINSCJ",Player1)
+END
+
+//MINSC 6TH TALK (WITCH ONLY)
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+Alignment(Player1,MASK_GOOD)
+OR(2)
+ Class(Player1,MAGE_ALL)
+ Class(Player1,BARD_ALL)
+Global("MinscWitch","GLOBAL",3)
+Global("I#MinscFriendshipActive","GLOBAL",2)
+Global("I#MinscWitchActive","GLOBAL",0)
+Global("I#MinscWitchTalk","GLOBAL",0)
+RealGlobalTimerExpired("I#MinscTime","GLOBAL")
+THEN
+RESPONSE #100
+RealSetGlobalTimer("I#MinscTime","GLOBAL",1800)
+SetGlobal("I#MinscWitchActive","GLOBAL",1)
+SetGlobal("I#MinscWitchTalk","GLOBAL",1)
+END
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+Global("I#MinscWitchTalk","GLOBAL",1)
+Global("I#MinscWitchActive","GLOBAL",1)
+RealGlobalTimerExpired("I#MinscTime","GLOBAL")
+!StateCheck(Player1,CD_STATE_NOTVALID)
+!StateCheck("MINSC",CD_STATE_NOTVALID)
+THEN
+RESPONSE #100
+SetGlobal("I#MinscWitchTalk","GLOBAL",2)
+END
+
+IF
+Global("I#MinscWitchTalk","GLOBAL",2)
+THEN
+RESPONSE #100
+MoveToObject(Player1)
+StartDialogue("MINSCJ",Player1)
+END
+
+//MINSC 7TH TALK
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+Global("MinscWitch","GLOBAL",3)
+Global("I#MinscWitchActive","GLOBAL",2)
+Global("I#MinscWitchTalk","GLOBAL",3)
+RealGlobalTimerExpired("I#MinscTime","GLOBAL")
+THEN
+RESPONSE #100
+RealSetGlobalTimer("I#MinscTime","GLOBAL",1800)
+SetGlobal("I#MinscWitchTalk","GLOBAL",4)
+END
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+Global("MinscWitch","GLOBAL",3)
+Global("I#MinscWitchActive","GLOBAL",2)
+Global("I#MinscWitchTalk","GLOBAL",4)
+RealGlobalTimerExpired("I#MinscTime","GLOBAL")
+!StateCheck(Player1,CD_STATE_NOTVALID)
+!StateCheck("MINSC",CD_STATE_NOTVALID)
+THEN
+RESPONSE #100
+SetGlobal("I#MinscWitchTalk","GLOBAL",5)
+END
+
+IF
+Global("I#MinscWitchTalk","GLOBAL",5)
+THEN
+RESPONSE #100
+MoveToObject(Player1)
+StartDialogue("MINSCJ",Player1)
+END
+
+//MINSC 8TH TALK
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+Global("MinscWitch","GLOBAL",3)
+Global("I#MinscWitchActive","GLOBAL",2)
+Global("I#MinscWitchTalk","GLOBAL",6)
+RealGlobalTimerExpired("I#MinscTime","GLOBAL")
+THEN
+RESPONSE #100
+RealSetGlobalTimer("I#MinscTime","GLOBAL",1800)
+SetGlobal("I#MinscWitchTalk","GLOBAL",7)
+END
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+HPPercentLT(Player1,50)
+Global("MinscWitch","GLOBAL",3)
+Global("I#MinscWitchActive","GLOBAL",2)
+Global("I#MinscWitchTalk","GLOBAL",7)
+RealGlobalTimerExpired("I#MinscTime","GLOBAL")
+!StateCheck(Player1,CD_STATE_NOTVALID)
+!StateCheck("MINSC",CD_STATE_NOTVALID)
+THEN
+RESPONSE #100
+SetGlobal("I#MinscWitchTalk","GLOBAL",8)
+END
+
+IF
+Global("I#MinscWitchTalk","GLOBAL",8)
+THEN
+RESPONSE #100
+MoveToObject(Player1)
+StartDialogue("MINSCJ",Player1)
+END
+
+//MINSC 9TH TALK
+
+IF
+Global("I#MinscGlass","GLOBAL",1)
+Global("I#MinscWitchTalk","GLOBAL",9)
+THEN
+RESPONSE #100
+SetGlobal("I#MinscWitchTalk","GLOBAL",12)
+END
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+Global("MinscWitch","GLOBAL",3)
+Global("I#MinscWitchActive","GLOBAL",2)
+!Global("I#MinscGlass","GLOBAL",1)
+Global("I#MinscWitchTalk","GLOBAL",9)
+RealGlobalTimerExpired("I#MinscTime","GLOBAL")
+THEN
+RESPONSE #100
+RealSetGlobalTimer("I#MinscTime","GLOBAL",1800)
+SetGlobal("I#MinscWitchTalk","GLOBAL",10)
+END
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+Global("MinscWitch","GLOBAL",3)
+Global("I#MinscWitchActive","GLOBAL",2)
+Global("I#MinscWitchTalk","GLOBAL",10)
+RealGlobalTimerExpired("I#MinscTime","GLOBAL")
+!StateCheck(Player1,CD_STATE_NOTVALID)
+!StateCheck("MINSC",CD_STATE_NOTVALID)
+THEN
+RESPONSE #100
+SetGlobal("I#MinscWitchTalk","GLOBAL",11)
+END
+
+IF
+Global("I#MinscWitchTalk","GLOBAL",11)
+THEN
+RESPONSE #100
+MoveToObject(Player1)
+StartDialogue("MINSCJ",Player1)
+END
+
+//MINSC 10TH TALK
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+Global("MinscWitch","GLOBAL",3)
+Global("I#MinscWitchActive","GLOBAL",2)
+Global("I#MinscWitchTalk","GLOBAL",12)
+RealGlobalTimerExpired("I#MinscTime","GLOBAL")
+THEN
+RESPONSE #100
+RealSetGlobalTimer("I#MinscTime","GLOBAL",1800)
+SetGlobal("I#MinscWitchTalk","GLOBAL",13)
+END
+
+IF
+Global("I#MinscWitchTalk","GLOBAL",14)
+THEN
+RESPONSE #100
+MoveToObject(Player1)
+StartDialogue("MINSCJ",Player1)
+END
+
+IF
+Global("I#MinscWitchTalk","GLOBAL",15)
+Global("I#MinscWitchActive","GLOBAL",2)
+THEN
+RESPONSE #100
+StartCutSceneMode()
+FadeToColor([30.0],0)
+Wait(2)
+FadeFromColor([30.0],0)
+EndCutSceneMode()
+SetGlobal("I#MinscWitchTalk","GLOBAL",16)
+END
+
+IF
+Global("I#MinscWitchTalk","GLOBAL",16)
+THEN
+RESPONSE #100
+MoveToObject(Player1)
+StartDialogue("MINSCJ",Player1)
+END
+
+//MINSC 11TH TALK (BRYNNLAW)
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+AreaCheck("AR1600")
+!Global("I#MinscBlock","GLOBAL",1)
+Global("I#MinscBrynnlaw","GLOBAL",0)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("I#MinscBrynnTime","GLOBAL",240)
+SetGlobal("I#MinscBrynnlaw","GLOBAL",1)
+END
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+AreaCheck("AR1600")
+!Global("I#MinscBlock","GLOBAL",1)
+Global("I#MinscBrynnlaw","GLOBAL",1)
+RealGlobalTimerExpired("I#MinscBrynnTime","GLOBAL")
+!StateCheck(Player1,CD_STATE_NOTVALID)
+!StateCheck("MINSC",CD_STATE_NOTVALID)
+THEN
+RESPONSE #100
+SetGlobal("I#MinscBrynnlaw","GLOBAL",2)
+END
+
+IF
+Global("I#MinscWitchTalk","GLOBAL",2)
+THEN
+RESPONSE #100
+MoveToObject(Player1)
+StartDialogue("MINSCJ",Player1)
+END
+
+//MINSC 12TH TALK (IMOEN)
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+InParty("Imoen2")
+AreaCheck("AR1512")
+!Global("I#MinscBlock","GLOBAL",1)
+Global("I#MinscImoen","GLOBAL",0)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("I#MinscImoenTime","GLOBAL",60)
+SetGlobal("I#MinscImoen","GLOBAL",1)
+END
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+InParty("Imoen2")
+AreaCheck("AR1512")
+!Global("I#MinscBlock","GLOBAL",1)
+Global("I#MinscImoen","GLOBAL",1)
+RealGlobalTimerExpired("I#MinscImoenTime","GLOBAL")
+!StateCheck(Player1,CD_STATE_NOTVALID)
+!StateCheck("MINSC",CD_STATE_NOTVALID)
+THEN
+RESPONSE #100
+SetGlobal("I#MinscImoen","GLOBAL",2)
+END
+
+IF
+Global("I#MinscImoen","GLOBAL",2)
+THEN
+RESPONSE #100
+MoveToObject(Player1)
+StartDialogue("MINSCJ",Player1)
+END
+
+//MINSC 13TH TALK (SLAYER)
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+GlobalGT("AsylumPlot","GLOBAL",42)
+!Global("I#MinscBlock","GLOBAL",1)
+Global("I#MinscSlayer","GLOBAL",0)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("I#MinscSlayerTime","GLOBAL",180)
+SetGlobal("I#MinscSlayer","GLOBAL",1)
+END
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+InParty("Imoen2")
+AreaCheck("AR1512")
+!Global("I#MinscBlock","GLOBAL",1)
+Global("I#MinscSlayer","GLOBAL",1)
+RealGlobalTimerExpired("I#MinscSlayerTime","GLOBAL")
+!StateCheck(Player1,CD_STATE_NOTVALID)
+!StateCheck("MINSC",CD_STATE_NOTVALID)
+THEN
+RESPONSE #100
+SetGlobal("I#MinscSlayer","GLOBAL",2)
+END
+
+IF
+Global("I#MinscSlayer","GLOBAL",2)
+THEN
+RESPONSE #100
+MoveToObject(Player1)
+StartDialogue("MINSCJ",Player1)
+END
+
+//MINSC 14TH TALK (SOUL REAVER)
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+PartyHasItem("SW2H08")
+!Global("I#MinscBlock","GLOBAL",1)
+Global("I#MinscSR","GLOBAL",0)
+!StateCheck(Player1,CD_STATE_NOTVALID)
+!StateCheck("MINSC",CD_STATE_NOTVALID)
+THEN
+RESPONSE #100
+SetGlobal("I#MinscSR","GLOBAL",1)
+END
+
+IF
+Global("I#MinscSR","GLOBAL",1)
+THEN
+RESPONSE #100
+MoveToObject(Player1)
+StartDialogue("MINSCJ",Player1)
+END
+
+//MINSC 15TH TALK (BODHI+IMOEN)
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+InParty("IMOEN2")
+PartyHasItem("C6LANTHO")
+AreaCheck("AR0809")
+!Global("I#MinscBlock","GLOBAL",1)
+Global("I#MinscImoenBodhi","GLOBAL",0)
+!StateCheck(Player1,CD_STATE_NOTVALID)
+!StateCheck("MINSC",CD_STATE_NOTVALID)
+THEN
+RESPONSE #100
+SetGlobal("I#MinscImoenBodhi","GLOBAL",1)
+END
+
+IF
+Global("I#MinscImoenBodhi","GLOBAL",1)
+THEN
+RESPONSE #100
+MoveToObject(Player1)
+StartDialogue("MINSCJ",Player1)
+END
+
+//MINSC 16TH TALK (ACORNS)
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+AreaCheck("AR0602")
+PartyHasItem("MISC4N")
+GlobalGT("HelpDryads","GLOBAL",1)
+Global("I#MinscAcorns","GLOBAL",0)
+!StateCheck(Player1,CD_STATE_NOTVALID)
+!StateCheck("MINSC",CD_STATE_NOTVALID)
+THEN
+RESPONSE #100
+SetGlobal("I#MinscAcorns","GLOBAL",1)
+END
+
+IF
+Global("I#MinscAcorns","GLOBAL",1)
+THEN
+RESPONSE #100
+MoveToObject(Player1)
+StartDialogue("MINSCJ",Player1)
+END

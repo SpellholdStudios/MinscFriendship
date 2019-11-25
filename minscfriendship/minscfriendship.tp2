@@ -1,0 +1,76 @@
+
+BACKUP ~minscfriendship/backup~
+AUTHOR ~Kaeloree, Lava Del'Vortel and AionZ~
+VERSION ~1.0~
+README ~minscfriendship/readme.html~
+
+
+
+// Translations
+AUTO_TRA ~minscfriendship/translations/%s~
+
+ALWAYS
+  // No exception, everything needs to be converted
+  ACTION_DEFINE_ARRAY Minscnoconvert BEGIN END
+
+  // any tra files used in LANGUAGE need to be reloaded after UTF-8 conversion
+  ACTION_DEFINE_ARRAY Minscreload BEGIN minscfriendship baldur END
+
+  LAF HANDLE_CHARSETS
+    INT_VAR
+      infer_charsets = 1
+    STR_VAR
+      tra_path = EVAL ~%MOD_FOLDER%/translations~
+      noconvert_array = minscnoconvert
+      reload_array = minscreload
+  END
+END
+
+
+LANGUAGE ~English~
+         ~English~
+         ~minscfriendship/translations/english/minscfriendship.tra~
+
+
+
+
+BEGIN @1 /* Minsc Friendship for BG2 and ToB */
+
+// Adding CD_STATE_NOTVALID
+
+APPEND ~STATE.IDS~
+  ~0x80101FEF CD_STATE_NOTVALID~
+  UNLESS ~CD_STATE_NOTVALID~
+  
+// Compiling dialogue & scripts SOA
+
+COMPILE ~minscfriendship/dialogues/minscj.d~
+EXTEND_TOP ~minsc.bcs~ ~minscfriendship/scripts/minsc.baf~
+
+PRINT @2 /* Minsc rest script detection... */
+ACTION_IF NOT (FILE_EXISTS_IN_GAME ~minscd.bcs~) THEN BEGIN
+ COMPILE ~%MOD_FOLDER%/scripts/minscd.baf~
+END
+
+EXTEND_TOP ~minscd.bcs~ ~minscfriendship/scripts/minscdx.baf~
+EXTEND_TOP ~baldur.bcs~ ~minscfriendship/scripts/baldur.baf~ EVALUATE_BUFFER USING ~minscfriendship/translations/%LANGUAGE%/baldur.tra~
+EXTEND_TOP ~baldur25.bcs~ ~minscfriendship/scripts/baldur.baf~ EVALUATE_BUFFER USING ~minscfriendship/translations/%LANGUAGE%/baldur.tra~
+
+// Compiling dialogue & scripts TOB
+
+COMPILE ~minscfriendship/dialogues/minsc25j.d~
+EXTEND_TOP ~minsc25.bcs~ ~minscfriendship/scripts/minsc25.baf~
+
+// Boo
+
+COPY_EXISTING ~misc84.itm~ ~override~
+ WRITE_LONG 0x18 (THIS | BIT11)
+
+APPEND ~ItemDial.2da~ ~misc84 5689 misc84~
+
+COMPILE ~minscfriendship/dialogues/misc84.d~
+
+// Protect
+
+COPY ~minscfriendship/spell/i#mprot.spl~ ~override~
+ SAY NAME1 @3 /* Protector's Rush */

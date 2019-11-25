@@ -1,0 +1,33 @@
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+AreaType(FOREST)
+Global("MinscWitch","GLOBAL",3)
+Global("I#MinscWitchActive","GLOBAL",2)
+Global("I#MinscWitchTalk","GLOBAL",13)
+RealGlobalTimerExpired("I#MinscTime","GLOBAL")
+!StateCheck(Player1,CD_STATE_NOTVALID)
+!StateCheck("MINSC",CD_STATE_NOTVALID)
+THEN
+RESPONSE #100
+SetGlobal("I#MinscWitchTalk","GLOBAL",14)
+END
+
+//TOB (Minsc uses the same dream script for ToB)
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+Global("SaradushSacked","GLOBAL",1)
+Global("I#MinscSaraSackedTOB","GLOBAL",1)
+GlobalTimerExpired("I#MinscSaraSackedTime","GLOBAL")
+!StateCheck(Player1,CD_STATE_NOTVALID)
+!StateCheck("MINSC",CD_STATE_NOTVALID)
+THEN
+RESPONSE #100
+SetGlobal("I#MinscSaraSackedTOB","GLOBAL",2)
+END

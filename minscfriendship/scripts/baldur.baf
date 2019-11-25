@@ -1,0 +1,35 @@
+IF
+InParty("MINSC")
+!CombatCounter(0)
+Gender(Player1,FEMALE)
+HPPercentLT(Player1,50)
+Global("I#MinscWitchActive","GLOBAL",2)
+OR(2)
+Global("I#MinscTheProtector","GLOBAL",0)
+GlobalTimerExpired("I#MinscProtectTime","GLOBAL")
+THEN
+RESPONSE #100
+ApplySpellRES("I#mprot","MINSC")
+SetGlobalTimer("I#MinscProtectTime","GLOBAL",ONE_DAY)
+DisplayStringHead("MINSC",@1000)
+//ActionOverride("MINSC",Attack(NearestEnemyOf(Player1)))
+SetGlobal("I#MinscTheProtector","GLOBAL",1)
+END
+
+IF
+InParty("MINSC")
+!CombatCounter(0)
+!Gender(Player1,FEMALE)
+HPPercentLT(Player1,50)
+Global("I#MinscWitchActive","GLOBAL",2)
+OR(2)
+Global("I#MinscTheProtector","GLOBAL",0)
+GlobalTimerExpired("I#MinscProtectTime","GLOBAL")
+THEN
+RESPONSE #100
+ApplySpellRES("I#mprot","MINSC")
+SetGlobalTimer("I#MinscProtectTime","GLOBAL",ONE_DAY)
+DisplayStringHead("MINSC",@1001)
+//ActionOverride("MINSC",Attack(NearestEnemyOf(Player1)))
+SetGlobal("I#MinscTheProtector","GLOBAL",1)
+END

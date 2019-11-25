@@ -1,0 +1,111 @@
+//////////////////////////////////
+//MINSC 1ST TOB TALK (TOB HEADS)
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+AreaCheck("AR4000")
+Global("I#MinscHeadsTOB","GLOBAL",0)
+THEN
+RESPONSE #100
+RealSetGlobalTimer("I#MinscTimeHeads","GLOBAL",5)
+SetGlobal("I#MinscHeadsTOB","GLOBAL",1)
+END
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+Global("I#MinscHeadsTOB","GLOBAL",1)
+RealGlobalTimerExpired("I#MinscTimeHeads","GLOBAL")
+!StateCheck(Player1,CD_STATE_NOTVALID)
+!StateCheck("MINSC",CD_STATE_NOTVALID)
+AreaCheck("AR4000")
+THEN
+RESPONSE #100
+SetGlobal("I#MinscHeadsTOB","GLOBAL",2)
+END
+
+IF
+Global("I#MinscHeadsTOB","GLOBAL",2)
+THEN
+RESPONSE #100
+MoveToObject(Player1)
+StartDialogue("MINSC25J",Player1)
+END
+
+//MINSC 2ND TOB TALK (SARADUSH TAVERN)
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+AreaCheck("AR5003")
+Global("I#MinscTavernTOB","GLOBAL",0)
+!StateCheck(Player1,CD_STATE_NOTVALID)
+!StateCheck("MINSC",CD_STATE_NOTVALID)
+THEN
+RESPONSE #100
+SetGlobal("I#MinscTavernTOB","GLOBAL",1)
+END
+
+IF
+Global("I#MinscTavernTOB","GLOBAL",1)
+THEN
+RESPONSE #100
+MoveToObject(Player1)
+StartDialogue("MINSC25J",Player1)
+END
+
+//MINSC 3RD TOB TALK (MIR)
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+AreaCheck("AR5202")
+Global("I#MinscMirTOB","GLOBAL",0)
+!StateCheck(Player1,CD_STATE_NOTVALID)
+!StateCheck("MINSC",CD_STATE_NOTVALID)
+THEN
+RESPONSE #100
+SetGlobal("I#MinscMirTOB","GLOBAL",1)
+END
+
+IF
+Global("I#MinscMirTOB","GLOBAL",1)
+THEN
+RESPONSE #100
+MoveToObject(Player1)
+StartDialogue("MINSC25J",Player1)
+END
+
+//MINSC 4TH TOB TALK (SARADUSH DEAD)
+
+IF
+See(Player1)
+!See([ENEMY])
+InParty(Myself)
+CombatCounter(0)
+Global("SaradushSacked","GLOBAL",1)
+Global("I#MinscSaraSackedTOB","GLOBAL",0)
+!StateCheck(Player1,CD_STATE_NOTVALID)
+!StateCheck("MINSC",CD_STATE_NOTVALID)
+THEN
+RESPONSE #100
+SetGlobalTimer("I#MinscSaraSackedTime","GLOBAL",ONE_DAY)
+SetGlobal("I#MinscSaraSackedTOB","GLOBAL",1)
+END
+
+IF
+Global("I#MinscSaraSackedTOB","GLOBAL",2)
+THEN
+RESPONSE #100
+MoveToObject(Player1)
+StartDialogue("MINSC25J",Player1)
+END
