@@ -1,76 +1,85 @@
 
 BACKUP ~minscfriendship/backup~
 AUTHOR ~Kaeloree, Lava Del'Vortel and AionZ~
-VERSION ~1.0~
-README ~minscfriendship/readme.html~
-
+VERSION ~v1.1~
+README ~minscfriendship/minscfriendship-readme-english.html~
 
 
 // Translations
 AUTO_TRA ~minscfriendship/translations/%s~
 
 ALWAYS
-  // No exception, everything needs to be converted
-  ACTION_DEFINE_ARRAY Minscnoconvert BEGIN END
 
-  // any tra files used in LANGUAGE need to be reloaded after UTF-8 conversion
-  ACTION_DEFINE_ARRAY Minscreload BEGIN minscfriendship baldur END
+	/* Converts tra files to UTF-8 */
+	// No exception, everything needs to be converted
+	ACTION_DEFINE_ARRAY Minscnoconvert BEGIN END
 
-  LAF HANDLE_CHARSETS
-    INT_VAR
-      infer_charsets = 1
-    STR_VAR
-      tra_path = EVAL ~%MOD_FOLDER%/translations~
-      noconvert_array = minscnoconvert
-      reload_array = minscreload
-  END
+	// any tra files used in LANGUAGE need to be reloaded after UTF-8 conversion
+	ACTION_DEFINE_ARRAY Minscreload BEGIN minscfriendship baldur END
+
+	LAF HANDLE_CHARSETS
+		INT_VAR
+			infer_charsets = 1
+		STR_VAR
+			tra_path = EVAL ~%MOD_FOLDER%/translations~
+			noconvert_array = Minscnoconvert
+			reload_array = Minscreload
+	END
+
 END
 
 
 LANGUAGE ~English~
-         ~English~
+         ~english~
          ~minscfriendship/translations/english/minscfriendship.tra~
 
-
+LANGUAGE ~Russian (translation by Arkie & Arcanecoast.ru)~
+         ~russian~
+         ~minscfriendship/translations/russian/minscfriendship.tra~
 
 
 BEGIN @1 /* Minsc Friendship for BG2 and ToB */
+REQUIRE_PREDICATE GAME_INCLUDES ~tob~ @2 /* The Minsc Friendship is only compatible with BGII: ToB, BGT and BGII:EE installations. */
 
-// Adding CD_STATE_NOTVALID
 
-APPEND ~STATE.IDS~
-  ~0x80101FEF CD_STATE_NOTVALID~
-  UNLESS ~CD_STATE_NOTVALID~
-  
+/* CamDawg's custom IsValidForPartyDialogue() state. Thanks Cam!
+   covers STATE_CONFUSED, STATE_FEEBLEMINDED, STATE_SILENCED, STATE_DEAD, STATE_ACID_DEATH, STATE_FLAME_DEATH, STATE_EXPLODING_DEATH, STATE_STONE_DEATH, STATE_FROZEN_DEATH, STATE_HELPLESS, STATE_STUNNED, STATE_PANIC, STATE_BERSERK, STATE_SLEEPING */
+APPEND ~STATE.IDS~ ~0x80101FEF CD_STATE_NOTVALID~ UNLESS ~CD_STATE_NOTVALID~
+ 
+ 
 // Compiling dialogue & scripts SOA
-
 COMPILE ~minscfriendship/dialogues/minscj.d~
 EXTEND_TOP ~minsc.bcs~ ~minscfriendship/scripts/minsc.baf~
 
-PRINT @2 /* Minsc rest script detection... */
-ACTION_IF NOT (FILE_EXISTS_IN_GAME ~minscd.bcs~) THEN BEGIN
- COMPILE ~%MOD_FOLDER%/scripts/minscd.baf~
+PRINT @3 /* Minsc rest script detection... */
+ACTION_IF NOT (FILE_EXISTS_IN_GAME ~minscd.bcs~) BEGIN
+	COMPILE ~%MOD_FOLDER%/scripts/minscd.baf~
 END
 
 EXTEND_TOP ~minscd.bcs~ ~minscfriendship/scripts/minscdx.baf~
 EXTEND_TOP ~baldur.bcs~ ~minscfriendship/scripts/baldur.baf~ EVALUATE_BUFFER USING ~minscfriendship/translations/%LANGUAGE%/baldur.tra~
 EXTEND_TOP ~baldur25.bcs~ ~minscfriendship/scripts/baldur.baf~ EVALUATE_BUFFER USING ~minscfriendship/translations/%LANGUAGE%/baldur.tra~
 
-// Compiling dialogue & scripts TOB
 
+// Compiling dialogue & scripts TOB
 COMPILE ~minscfriendship/dialogues/minsc25j.d~
 EXTEND_TOP ~minsc25.bcs~ ~minscfriendship/scripts/minsc25.baf~
 
+
 // Boo
-
 COPY_EXISTING ~misc84.itm~ ~override~
- WRITE_LONG 0x18 (THIS | BIT11)
+	WRITE_LONG 0x18 (THIS | BIT11)
 
-APPEND ~ItemDial.2da~ ~misc84 5689 misc84~
+COPY_EXISTING ~itemdial.2da~ ~override~
+	COUNT_2DA_COLS cols
+	COUNT_2DA_ROWS cols rows
+	INSERT_2DA_ROW rows cols ~misc84        5689   misc84~
+    PRETTY_PRINT_2DA
+BUT_ONLY
 
 COMPILE ~minscfriendship/dialogues/misc84.d~
 
-// Protect
 
+// Protect
 COPY ~minscfriendship/spell/i#mprot.spl~ ~override~
- SAY NAME1 @3 /* Protector's Rush */
+	SAY NAME1 @4 /* Protector's Rush */
