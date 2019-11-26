@@ -12,7 +12,7 @@ Baldur's Gate Trilogy and EET<h3>
 
 **Author:** Lava Del'Vortel, Kaeloree & AionZ (aka Artemius_I)  
 **Mod Website:** <a href="http://www.spellholdstudios.net/ie/npciep">Spellhold Studios</a>  
-**Mod Forum:** <a href="http://www.shsforums.net/index.php?showforum=353">Minsc Friendship</a><br /><br />
+**Mod Forum:** <a href="http://www.shsforums.net/forum/668-minsc-friendship/">Minsc Friendship</a><br /><br />
 
 
 <div align="center">
@@ -30,7 +30,7 @@ One of the things many find sorely lacking in the Bioware NPCs are the more comp
 This mod adds a series of dialogues with Minsc.
 
 
-Visit the <a href="http://www.spellholdstudios.net/ie/npciep">website</a> or <a href="http://www.shsforums.net/index.php?showforum=555">forum</a> for all the latest updates.
+Visit the <a href="http://www.spellholdstudios.net/ie/npciep">website</a> or <a href="http://www.shsforums.net/forum/668-minsc-friendship/">forum</a> for all the latest updates.
 
 
 <hr>
@@ -93,7 +93,7 @@ A: It most certainly should be, but we have not tested it with every single mod 
 A: After you join Minsc. First timered dialogue should happen some time after you visit Slums for the first time. Talks with specific PC character should start after 5 friendship talks. There are also some event-related talks which can be fired independently.
 
 **Q: This mod isn't in character at *all*.**  
-A: I'm always looking for ways to improve the characterisation in this mod, so please send any suggestions or constructive criticism on the <a href="http://www.shsforums.net">forums</a>.
+A: I'm always looking for ways to improve the characterisation in this mod, so please send any suggestions or constructive criticism on the <a href="http://www.shsforums.net/forum/668-minsc-friendship/">forums</a>.
 
 **Q: Have you got any plans to expand the mod by adding more dialogues in future?**  
 A: There are no current plans to add to the mod, no, but feel free to make suggestions!
@@ -156,8 +156,9 @@ A: Sure, we'd be happy to. If you are interested in translating, just send us a 
 ##### Version 1.1 (November 24, 2019)
 
 - Added *minscfriendship.ini* metadata file to support AL|EN's "Project Infinity".
-- Added `REQUIRE_PREDICATE` process to avoid installing the mod in inaccurate games.
 - Rewrote itemdial.2da appending in a more "cosmetic" way.
+- Added `REQUIRE_PREDICATE` process to avoid installing the mod in inaccurate games.
+- Component: added *DESIGNATED* number and "*minsc_friendship*" LABEL.
 - Updated deprecated modding tools links.
 - Lower cased files.
 - Updated and renamed readme file to *minscfriendship-readme-english.html*.

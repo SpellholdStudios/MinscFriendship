@@ -38,9 +38,13 @@ LANGUAGE ~Russian (translation by Arkie & Arcanecoast.ru)~
          ~minscfriendship/translations/russian/minscfriendship.tra~
 
 
+/* =================================== *
+ *    Minsc Friendship for BG2: ToB    *
+ * =================================== */
+
 BEGIN @1 /* Minsc Friendship for BG2 and ToB */
 REQUIRE_PREDICATE GAME_INCLUDES ~tob~ @2 /* The Minsc Friendship is only compatible with BGII: ToB, BGT and BGII:EE installations. */
-
+DESIGNATED 0 LABEL ~minsc_friendship~
 
 /* CamDawg's custom IsValidForPartyDialogue() state. Thanks Cam!
    covers STATE_CONFUSED, STATE_FEEBLEMINDED, STATE_SILENCED, STATE_DEAD, STATE_ACID_DEATH, STATE_FLAME_DEATH, STATE_EXPLODING_DEATH, STATE_STONE_DEATH, STATE_FROZEN_DEATH, STATE_HELPLESS, STATE_STUNNED, STATE_PANIC, STATE_BERSERK, STATE_SLEEPING */
