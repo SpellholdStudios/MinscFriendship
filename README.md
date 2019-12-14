@@ -1,4 +1,4 @@
-![Latest Release](https://img.shields.io/github/v/release/SpellholdStudios/MinscFriendship?include_prereleases&color=darkred)<a name="top" id="top">
+![Latest Release](https://img.shields.io/github/v/release/SpellholdStudios/MinscFriendship?include_prereleases&color=darkred)<a name="top" id="top"> </a>
 ![Platform](https://img.shields.io/static/v1?label=platform&message=windows%20%7C%20macos%20%7C%20linux&color=informational)
 ![Language](https://img.shields.io/static/v1?label=language&message=English%20%7C%20Russian&color=limegreen)
 
@@ -152,6 +152,12 @@ A: Sure, we'd be happy to. If you are interested in translating, just send us a 
 
 
 ## <a name="versions" id="versions"></a>Versions History
+
+##### Version 1.2 (December 14, 2019)
+
+- Fixed an issue with *Auto-Package Generator tool*: new version of MacOS (Catalina) prevented the mod to be installed.
+
+## 
 
 ##### Version 1.1 (November 24, 2019)
 
