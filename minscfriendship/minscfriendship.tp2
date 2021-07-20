@@ -1,8 +1,8 @@
 
 BACKUP ~minscfriendship/backup~
 AUTHOR ~Kaeloree, Lava Del'Vortel and AionZ~
-VERSION ~v1.2~
-README ~minscfriendship/minscfriendship-readme-english.html~
+VERSION ~v1.3~
+README ~minscfriendship/readme/minscfriendship-readme-english.html~
 
 
 // Translations
@@ -36,6 +36,10 @@ LANGUAGE ~English~
 LANGUAGE ~Russian (translation by Arkie & Arcanecoast.ru)~
          ~russian~
          ~minscfriendship/translations/russian/minscfriendship.tra~
+
+LANGUAGE ~Espanol (traduccion por Magis365)~
+         ~spanish~
+         ~minscfriendship/translations/spanish/minscfriendship.tra~
 
 
 /* =================================== *
